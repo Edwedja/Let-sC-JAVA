@@ -6,60 +6,107 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //SAÍDAS
 
-        int idade = 27;
-        String nome = "edwedja";
-        float altura = 1.68f;
-        // enum
-        // boolean é %b
+        Scanner scan = new Scanner (System.in);
 
-        boolean par = 4% 2 == 0;
-        System.out.printf("Oi, meu nome é %s, tenho %d e minha altura é  %.2f %n", nome, idade,altura);
+        // AULA 4 -  DE CONTROLE DE FLUXOS (IF, ELSE, ETC...)
+        /*
+         * pessoas < 16 -> não podem votar
+         * pessoas >= 16 -> opcional && < 18
+         * pessoas > 18 -> obrigatório
+         * pessoas < 70 -> obrigatório
+         * pessoas > 70 -> opcional*/
+
+        System.out.print("Informe a sua idade: ");
+        //int ag = Integer.parseInt(scan.nextLine());
+        int ag = scan.nextInt();
+
+        if(ag >= 16 &&  ag < 18 || ag > 70){
+            System.out.println("Seu voto é opcional");
+        } else if (ag < 16){
+            System.out.println("Você não pode votar");
+        }else {
+            System.out.println("Seu voto é obrigatório");
+        }
+
+        int month = 1;
+        String monthString;
+
+        switch (month) {
+            case 1:
+                monthString = "Janeiro";
+                break;
+            case 2:
+                monthString = "Fevereiro";
+                break;
+            case 3:
+                monthString = "Março";
+                break;
+            default:
+                monthString = "teste";
+        }
+
+        System.out.println(monthString);
+
+        int mes;
+        int dias = 31;
+
+        System.out.println("Digite o mês [1-12]: ");
+        mes = scan.nextInt();
+
+        if (mes > 12 || mes < 1) {
+            System.out.println("Mês inválido");
+        }
+
+        switch (mes){
+            case 2:
+                dias = dias -3;
+                break;
+            case 4 :
+            case 6:
+            case 9:
+            case 11:
+                dias = dias -1;
+                break;
+
+        }
+        System.out.printf("O mês %d possui %d dias", mes, dias);
 
 
-        // ENTRADAS
-        //  System.out.printf("Hello, %s", args[0]);
+        // Estruturas de repetição!  While/Do-while/ for
 
-        Scanner scan = new Scanner (System.in); //instanciando a classe
-        //int num = Integer.parseInt((scan.nextLine())); // para que ele não pule linhas no retorno!
+        int count = 0;
+//        while (count < 11){
+//            System.out.println("Count is: " + count);
+//            count +=1;
+//        }
 
-        System.out.println("Informe seu nome:");
-        String name = scan.next();  // ou nextLine -> para o nome completo
+        do{
+            System.out.println("Count is: " + count);
+            count +=1;
+        } while (count < 11);
 
-        System.out.println("Informe a sua idade: ");
-        int age = scan.nextInt();
+        // MÉDIA DE NOTAS
 
-        System.out.println("Informe um valor para o byte: ");
-        byte b = scan.nextByte();
+        float notas = 0f;
+        float total = 0f;
+        float media = 0f;
+        int cont = 0;
 
-        // char c = scan.ne
+        while (cont<3){
+            cont +=1;
+            System.out.printf("Informe a %d nota", cont);
+            notas = scan.nextFloat();
+            total += notas;
+        }
+        media = total /3;
+        System.out.printf(" A média é %f", media);
 
-        System.out.printf("o nome informado foi: %s %n", name);
-        System.out.printf("a indade informada foi: %d %n", age);
-        System.out.printf("a indade informada foi: %b %n", b);
 
+        for (int i =0; i< 11; i++){
+            System.out.println(i);
+        }
 
-        //EXERCÍCIO:
-
-        /* Crie um programa que receba um valor em real no input e converta para dólar e euro e imprima
-         * ex. você possui 5 (USD)  --> 5,65 dolar
-         * ex. você possui 1 (EUR)  --> 6,39 euro */
-
-        final float dolar = 5.65f;
-        final float euro = 6.39f;
-
-        float convD;
-        float conve;
-
-        System.out.println("Informe o valor em reais (apenas numeros) : ");
-        float real = scan.nextFloat();
-
-        convD = real / dolar;
-        conve = real / euro;
-
-        System.out.printf("A conversão para dólar é de %f (USD) %n", convD);
-        System.out.printf("A conversão para euro é de %f (EUR)  %n", conve);
 
     }
 }
